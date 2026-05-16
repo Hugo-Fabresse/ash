@@ -5,15 +5,15 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
+#include <QLabel>
+#include <QPointer>
 
 class App : public QWidget {
 public:
 	App();
 
 private:
-	QVBoxLayout mainLayout;
-	QWidget topWidget;
-	QWidget bottomWidget;
+	QPointer<QLabel> artworkLabel;
 };
 
 #endif // APP_H
