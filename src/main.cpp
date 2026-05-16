@@ -1,10 +1,11 @@
-#include <QCoreApplication>
-#include "spotify/spotify_metadata/SpotifyMetadata.h"
+#include <QApplication>
+#include "app/App.h"
 
 int main(int argc, char *argv[]) {
-	QCoreApplication app(argc, argv);
-	SpotifyMetadata metadata;
-	qDebug() << metadata.getTitle();
-	return 0;
+	QApplication myApp(argc, argv);
+	App app;
+
+	app.show();
+	return myApp.exec();
 }
 
