@@ -1,4 +1,4 @@
-// ash - src/spotify_controller/SpotifyController.cpp
+// ash - src/spotify/spotify_controller/SpotifyController.cpp
 
 #include "SpotifyController.h"
 #include <QtLogging>

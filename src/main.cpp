@@ -1,10 +1,10 @@
 #include <QCoreApplication>
-#include "spotify_controller/SpotifyController.h"
+#include "spotify/spotify_metadata/SpotifyMetadata.h"
 
 int main(int argc, char *argv[]) {
-    QCoreApplication app(argc, argv);
-    SpotifyController controller;
-    controller.playPause();
-    return 0;
+	QCoreApplication app(argc, argv);
+	SpotifyMetadata metadata;
+	qDebug() << metadata.getTitle();
+	return 0;
 }
 

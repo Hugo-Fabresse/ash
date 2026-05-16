@@ -1,4 +1,4 @@
-// ash - src/spotify_controller/SpotifyController.h
+// ash - src/spotify/spotify_controller/SpotifyController.h
 
 #ifndef SPOTIFYCONTROLLER_H
 #define SPOTIFYCONTROLLER_H
@@ -7,7 +7,6 @@
 #include <memory>
 
 class SpotifyController {
-
 public:
 	SpotifyController();
 
@@ -16,7 +15,6 @@ public:
 	void previous();
 
 private:
-
 	std::unique_ptr<QDBusInterface> dbus;
 };
 
