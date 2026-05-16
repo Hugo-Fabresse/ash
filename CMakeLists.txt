@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 project(ash)
 
 find_package(Qt6 REQUIRED COMPONENTS Core DBus Network Widgets)
+qt_add_resources(ASH_RESOURCES src/resources.qrc)
 
 add_executable(ash
 	src/main.cpp
@@ -12,5 +13,6 @@ add_executable(ash
 )
 
 target_include_directories(ash PRIVATE src)
+target_sources(ash PRIVATE ${ASH_RESOURCES})
 target_link_libraries(ash Qt6::Core Qt6::DBus Qt6::Network Qt6::Widgets)
 
