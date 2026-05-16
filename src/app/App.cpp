@@ -40,5 +40,21 @@ App::App() : QWidget() {
 	progressLayout->addWidget(durationLabel);
 
 	bottomLayout->addLayout(progressLayout);
+
+	QHBoxLayout *controlsLayout = new QHBoxLayout();
+	controlsLayout->setSpacing(0);
+	controlsLayout->setContentsMargins(0, 15, 0, 0);
+
+	prevBtn = new QPushButton("⏮", bottomWidget);
+	playBtn = new QPushButton("⏯", bottomWidget);
+	nextBtn = new QPushButton("⏭", bottomWidget);
+
+	controlsLayout->addWidget(prevBtn);
+	controlsLayout->addStretch();
+	controlsLayout->addWidget(playBtn);
+	controlsLayout->addStretch();
+	controlsLayout->addWidget(nextBtn);
+
+	bottomLayout->addLayout(controlsLayout);
 }
 

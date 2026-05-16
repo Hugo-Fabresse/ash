@@ -8,6 +8,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QSlider>
+#include <QPushButton>
 #include <QPointer>
 
 class App : public QWidget {
@@ -19,6 +20,9 @@ private:
 	QPointer<QLabel> timeLabel;
 	QPointer<QLabel> durationLabel;
 	QPointer<QSlider> progressBar;
+	QPointer<QPushButton> prevBtn;
+	QPointer<QPushButton> playBtn;
+	QPointer<QPushButton> nextBtn;
 };
 
 #endif // APP_H
