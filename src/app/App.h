@@ -5,7 +5,9 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QLabel>
+#include <QSlider>
 #include <QPointer>
 
 class App : public QWidget {
@@ -14,6 +16,9 @@ public:
 
 private:
 	QPointer<QLabel> artworkLabel;
+	QPointer<QLabel> timeLabel;
+	QPointer<QLabel> durationLabel;
+	QPointer<QSlider> progressBar;
 };
 
 #endif // APP_H
