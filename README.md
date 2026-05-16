@@ -29,10 +29,5 @@ ash
 
 ## controls
 
-| key | action |
-|-----|--------|
-| `space` | play / pause |
-| `n` | next |
-| `p` | previous |
-| `q` | quit |
+play/pause, next, previous. all from the widget.
 
