@@ -16,6 +16,11 @@ public:
 	App();
 
 private:
+	void setupWindow();
+	void setupArtwork(QWidget *parent);
+	void setupProgress(QWidget *parent);
+	void setupControls(QWidget *parent);
+
 	QPointer<QLabel> artworkLabel;
 	QPointer<QLabel> timeLabel;
 	QPointer<QLabel> durationLabel;
@@ -26,4 +31,3 @@ private:
 };
 
 #endif // APP_H
-

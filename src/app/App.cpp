@@ -3,9 +3,7 @@
 #include "App.h"
 
 App::App() : QWidget() {
-	setWindowFlag(Qt::FramelessWindowHint);
-	setAttribute(Qt::WA_TranslucentBackground);
-	setFixedSize(220, 340);
+	setupWindow();
 
 	QVBoxLayout *mainLayout = new QVBoxLayout(this);
 	mainLayout->setContentsMargins(0, 0, 0, 0);
@@ -16,38 +14,54 @@ App::App() : QWidget() {
 	mainLayout->addWidget(topWidget);
 	mainLayout->addWidget(bottomWidget);
 
-	artworkLabel = new QLabel(topWidget);
+	setupArtwork(topWidget);
+	setupProgress(bottomWidget);
+	setupControls(bottomWidget);
+}
+
+void App::setupWindow() {
+	setWindowFlag(Qt::FramelessWindowHint);
+	setAttribute(Qt::WA_TranslucentBackground);
+	setFixedSize(220, 340);
+}
+
+void App::setupArtwork(QWidget *parent) {
+	artworkLabel = new QLabel(parent);
 	artworkLabel->setFixedSize(190, 190);
 	artworkLabel->setStyleSheet("background: #282828; border-radius: 12px;");
 
-	QVBoxLayout *topLayout = new QVBoxLayout(topWidget);
+	QVBoxLayout *topLayout = new QVBoxLayout(parent);
 	topLayout->setContentsMargins(15, 15, 15, 12);
 	topLayout->addWidget(artworkLabel, 0, Qt::AlignCenter);
+}
 
-	QVBoxLayout *bottomLayout = new QVBoxLayout(bottomWidget);
+void App::setupProgress(QWidget *parent) {
+	QVBoxLayout *bottomLayout = new QVBoxLayout(parent);
 	bottomLayout->setContentsMargins(20, 10, 20, 25);
 	bottomLayout->setSpacing(8);
 
 	QHBoxLayout *progressLayout = new QHBoxLayout();
 	progressLayout->setSpacing(10);
 
-	timeLabel = new QLabel("0:00", bottomWidget);
-	progressBar = new QSlider(Qt::Horizontal, bottomWidget);
-	durationLabel = new QLabel("0:00", bottomWidget);
+	timeLabel = new QLabel("0:00", parent);
+	progressBar = new QSlider(Qt::Horizontal, parent);
+	durationLabel = new QLabel("0:00", parent);
 
 	progressLayout->addWidget(timeLabel);
 	progressLayout->addWidget(progressBar, 1);
 	progressLayout->addWidget(durationLabel);
 
 	bottomLayout->addLayout(progressLayout);
+}
 
+void App::setupControls(QWidget *parent) {
 	QHBoxLayout *controlsLayout = new QHBoxLayout();
 	controlsLayout->setSpacing(0);
 	controlsLayout->setContentsMargins(0, 15, 0, 0);
 
-	prevBtn = new QPushButton("⏮", bottomWidget);
-	playBtn = new QPushButton("⏯", bottomWidget);
-	nextBtn = new QPushButton("⏭", bottomWidget);
+	prevBtn = new QPushButton("⏮", parent);
+	playBtn = new QPushButton("⏯", parent);
+	nextBtn = new QPushButton("⏭", parent);
 
 	controlsLayout->addWidget(prevBtn);
 	controlsLayout->addStretch();
@@ -55,6 +69,9 @@ App::App() : QWidget() {
 	controlsLayout->addStretch();
 	controlsLayout->addWidget(nextBtn);
 
-	bottomLayout->addLayout(controlsLayout);
+	// Add to parent's existing layout
+	QVBoxLayout *parentLayout = qobject_cast<QVBoxLayout*>(parent->layout());
+	if (parentLayout) {
+		parentLayout->addLayout(controlsLayout);
+	}
 }
-
