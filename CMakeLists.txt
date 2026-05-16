@@ -6,6 +6,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core DBus Widgets)
 add_executable(ash
 	src/main.cpp
 	src/app/App.cpp
+	src/app/IconFactory.cpp
 	src/spotify/spotify_controller/SpotifyController.cpp
 	src/spotify/spotify_metadata/SpotifyMetadata.cpp
 )

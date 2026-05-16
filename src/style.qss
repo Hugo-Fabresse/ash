@@ -1,0 +1,51 @@
+#artworkLabel {
+	background: #282828;
+	border-radius: 12px;
+}
+
+#timeLabel, #durationLabel {
+	color: #B3B3B3;
+	font-size: 11px;
+}
+
+QSlider::groove:horizontal {
+	border: none;
+	height: 4px;
+	background: #4D4D4D;
+	border-radius: 2px;
+}
+
+QSlider::handle:horizontal {
+	background: #FFFFFF;
+	border: none;
+	width: 12px;
+	height: 12px;
+	margin: -4px 0;
+	border-radius: 6px;
+}
+
+QSlider::sub-page:horizontal {
+	background: #FFFFFF;
+	border-radius: 2px;
+}
+
+#prevBtn, #nextBtn {
+	background: transparent;
+	border: none;
+}
+
+#prevBtn:hover, #nextBtn:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+#playBtn {
+	background-color: #FFFFFF;
+	border: none;
+	border-radius: 32px;
+	color: #000000;
+}
+
+#playBtn:hover {
+	background-color: #F0F0F0;
+}
+

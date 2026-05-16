@@ -1,10 +1,11 @@
 // ash - src/spotify/spotify_metadata/SpotifyMetadata.cpp
 
 #include "SpotifyMetadata.h"
-#include <QtLogging>
+
+#include <QDBusArgument>
 #include <QDBusMessage>
 #include <QDBusVariant>
-#include <QDBusArgument>
+#include <QtLogging>
 
 SpotifyMetadata::SpotifyMetadata() {
 	dbus = std::make_unique<QDBusInterface>("org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.freedesktop.DBus.Properties");

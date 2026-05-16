@@ -3,13 +3,11 @@
 #ifndef APP_H
 #define APP_H
 
-#include <QWidget>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
 #include <QLabel>
-#include <QSlider>
-#include <QPushButton>
 #include <QPointer>
+#include <QPushButton>
+#include <QSlider>
+#include <QWidget>
 
 class App : public QWidget {
 public:
@@ -31,3 +29,4 @@ private:
 };
 
 #endif // APP_H
+

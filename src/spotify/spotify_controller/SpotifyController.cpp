@@ -1,6 +1,7 @@
 // ash - src/spotify/spotify_controller/SpotifyController.cpp
 
 #include "SpotifyController.h"
+
 #include <QtLogging>
 
 SpotifyController::SpotifyController() {

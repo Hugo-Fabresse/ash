@@ -4,6 +4,7 @@
 #define SPOTIFYCONTROLLER_H
 
 #include <QDBusInterface>
+
 #include <memory>
 
 class SpotifyController {

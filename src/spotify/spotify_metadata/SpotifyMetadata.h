@@ -5,6 +5,7 @@
 
 #include <QDBusInterface>
 #include <QVariant>
+
 #include <memory>
 
 class SpotifyMetadata {
