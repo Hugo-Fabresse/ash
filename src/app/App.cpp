@@ -93,5 +93,9 @@ void App::setupControls(QWidget *parent) {
 	if (parentLayout) {
 		parentLayout->addLayout(controlsLayout);
 	}
+
+	connect(playBtn, &QPushButton::clicked, [this]() { controller.playPause(); });
+	connect(prevBtn, &QPushButton::clicked, [this]() { controller.previous(); });
+	connect(nextBtn, &QPushButton::clicked, [this]() { controller.next(); });
 }
 

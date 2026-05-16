@@ -3,6 +3,8 @@
 #ifndef APP_H
 #define APP_H
 
+#include "spotify/spotify_controller/SpotifyController.h"
+
 #include <QLabel>
 #include <QPointer>
 #include <QPushButton>
@@ -26,6 +28,8 @@ private:
 	QPointer<QPushButton> prevBtn;
 	QPointer<QPushButton> playBtn;
 	QPointer<QPushButton> nextBtn;
+
+	SpotifyController controller;
 };
 
 #endif // APP_H

@@ -11,5 +11,6 @@ add_executable(ash
 	src/spotify/spotify_metadata/SpotifyMetadata.cpp
 )
 
+target_include_directories(ash PRIVATE src)
 target_link_libraries(ash Qt6::Core Qt6::DBus Qt6::Widgets)
 
