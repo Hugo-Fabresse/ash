@@ -5,6 +5,8 @@
 
 #include <QHBoxLayout>
 #include <QNetworkReply>
+#include <QPainter>
+#include <QPainterPath>
 #include <QVBoxLayout>
 
 App::App() : QWidget() {
@@ -127,7 +129,19 @@ void App::updateMetadata() {
 		connect(reply, &QNetworkReply::finished, [this, reply]() {
 			QPixmap pixmap;
 			pixmap.loadFromData(reply->readAll());
-			artworkLabel->setPixmap(pixmap.scaled(190, 190, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+			QPixmap scaled = pixmap.scaled(190, 190, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
+			QPixmap rounded(190, 190);
+			rounded.fill(Qt::transparent);
+			QPainter painter(&rounded);
+			painter.setRenderHint(QPainter::Antialiasing);
+			QPainterPath path;
+			path.addRoundedRect(0, 0, 190, 190, 12, 12);
+			painter.setClipPath(path);
+			painter.drawPixmap(0, 0, scaled);
+			painter.end();
+
+			artworkLabel->setPixmap(rounded);
 			reply->deleteLater();
 		});
 	}
