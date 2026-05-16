@@ -4,10 +4,16 @@
 #define APP_H
 
 #include <QWidget>
+#include <QVBoxLayout>
 
 class App : public QWidget {
 public:
-	App();	
+	App();
+
+private:
+	QVBoxLayout mainLayout;
+	QWidget topWidget;
+	QWidget bottomWidget;
 };
 
 #endif // APP_H
