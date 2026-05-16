@@ -27,3 +27,21 @@ QString SpotifyMetadata::getTitle() {
 	return fetchMetadata()["xesam:title"].toString();
 }
 
+QString SpotifyMetadata::getPlaybackStatus() {
+	QDBusMessage reply = dbus->call("Get", "org.mpris.MediaPlayer2.Player", "PlaybackStatus");
+	return reply.arguments().at(0).value<QDBusVariant>().variant().toString();
+}
+
+qint64 SpotifyMetadata::getPosition() {
+	QDBusMessage reply = dbus->call("Get", "org.mpris.MediaPlayer2.Player", "Position");
+	return reply.arguments().at(0).value<QDBusVariant>().variant().toLongLong();
+}
+
+qint64 SpotifyMetadata::getDuration() {
+	return fetchMetadata()["mpris:length"].toLongLong();
+}
+
+QString SpotifyMetadata::getArtUrl() {
+	return fetchMetadata()["mpris:artUrl"].toString();
+}
+

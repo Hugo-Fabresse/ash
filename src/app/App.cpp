@@ -4,6 +4,7 @@
 #include "IconFactory.h"
 
 #include <QHBoxLayout>
+#include <QNetworkReply>
 #include <QVBoxLayout>
 
 App::App() : QWidget() {
@@ -21,6 +22,9 @@ App::App() : QWidget() {
 	setupArtwork(topWidget);
 	setupProgress(bottomWidget);
 	setupControls(bottomWidget);
+
+	connect(&timer, &QTimer::timeout, this, &App::updateMetadata);
+	timer.start(500);
 }
 
 void App::setupWindow() {
@@ -97,5 +101,35 @@ void App::setupControls(QWidget *parent) {
 	connect(playBtn, &QPushButton::clicked, [this]() { controller.playPause(); });
 	connect(prevBtn, &QPushButton::clicked, [this]() { controller.previous(); });
 	connect(nextBtn, &QPushButton::clicked, [this]() { controller.next(); });
+}
+
+void App::updateMetadata() {
+	qint64 position = metadata.getPosition() / 1000000;
+	qint64 duration = metadata.getDuration() / 1000000;
+
+	progressBar->setMaximum(duration);
+	progressBar->setValue(position);
+
+	timeLabel->setText(QString("%1:%2").arg(position / 60).arg(position % 60, 2, 10, QChar('0')));
+	durationLabel->setText(QString("%1:%2").arg(duration / 60).arg(duration % 60, 2, 10, QChar('0')));
+
+	QString status = metadata.getPlaybackStatus();
+	if (status == "Playing") {
+		playBtn->setIcon(IconFactory::create("pause"));
+	} else {
+		playBtn->setIcon(IconFactory::create("play"));
+	}
+
+	QString artUrl = metadata.getArtUrl();
+	if (artUrl != currentArtUrl) {
+		currentArtUrl = artUrl;
+		QNetworkReply *reply = networkManager.get(QNetworkRequest(QUrl(artUrl)));
+		connect(reply, &QNetworkReply::finished, [this, reply]() {
+			QPixmap pixmap;
+			pixmap.loadFromData(reply->readAll());
+			artworkLabel->setPixmap(pixmap.scaled(190, 190, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+			reply->deleteLater();
+		});
+	}
 }
 

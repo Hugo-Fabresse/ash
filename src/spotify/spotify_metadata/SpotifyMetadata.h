@@ -13,6 +13,10 @@ public:
 	SpotifyMetadata();
 
 	QString getTitle();
+	QString getPlaybackStatus();
+	qint64 getPosition();
+	qint64 getDuration();
+	QString getArtUrl();
 
 private:
 	QVariantMap fetchMetadata();

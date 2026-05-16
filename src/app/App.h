@@ -4,11 +4,14 @@
 #define APP_H
 
 #include "spotify/spotify_controller/SpotifyController.h"
+#include "spotify/spotify_metadata/SpotifyMetadata.h"
 
 #include <QLabel>
+#include <QNetworkAccessManager>
 #include <QPointer>
 #include <QPushButton>
 #include <QSlider>
+#include <QTimer>
 #include <QWidget>
 
 class App : public QWidget {
@@ -20,6 +23,7 @@ private:
 	void setupArtwork(QWidget *parent);
 	void setupProgress(QWidget *parent);
 	void setupControls(QWidget *parent);
+	void updateMetadata();
 
 	QPointer<QLabel> artworkLabel;
 	QPointer<QLabel> timeLabel;
@@ -30,6 +34,10 @@ private:
 	QPointer<QPushButton> nextBtn;
 
 	SpotifyController controller;
+	SpotifyMetadata metadata;
+	QTimer timer;
+	QNetworkAccessManager networkManager;
+	QString currentArtUrl;
 };
 
 #endif // APP_H
