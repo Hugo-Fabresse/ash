@@ -2,5 +2,9 @@
 
 #include "App.h"
 
-App::App() : QWidget() {}
+App::App() : QWidget() {
+	setWindowFlag(Qt::FramelessWindowHint);
+	setAttribute(Qt::WA_TranslucentBackground);
+	setFixedSize(220, 340);
+}
 
